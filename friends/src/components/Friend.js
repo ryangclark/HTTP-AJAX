@@ -11,4 +11,6 @@ const Friend = props => {
     )
 }
 
+// PROP TYPES!
+
 export default Friend;

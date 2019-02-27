@@ -17,7 +17,7 @@ const FriendsList = () => {
 
     return (
         <div className="friends-list">
-            {Amigos.map(amigo => <Friend friend={amigo} />)}
+            {Amigos.map(amigo => <Friend friend={amigo} key={amigo.id} />)}
         </div>
     );
 }

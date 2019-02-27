@@ -14,6 +14,19 @@ h2 {
     padding: 0.5rem 0;
 }
 
+.friend-form {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 25vw;
+}
+.friend-form > label {
+    margin: 0.25rem 0;
+}
+.friend-form > input {
+    margin: 0.5rem 0;
+}
+
 .friends-list {
     display: flex;
     flex-wrap: wrap;
