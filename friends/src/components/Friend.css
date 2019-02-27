@@ -1,0 +1,20 @@
+h2 {
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+
+.friend {
+    background: lightgrey;
+    margin: 1rem;
+    padding: 1rem;
+    width: 15rem;
+}
+
+.friend > p {
+    padding: 0.5rem 0;
+}
+
+.friends-list {
+    display: flex;
+    flex-wrap: wrap;
+}
