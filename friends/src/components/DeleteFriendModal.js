@@ -52,7 +52,13 @@ const DeleteFriendModal = props => {
         : false;
     return (
         <React.Fragment>
-            <button onClick={() => setModalActive(true)} type="button">
+            <button
+                onClick={event => {
+                    event.target.parentElement.parentElement.classList.remove('active');
+                    setModalActive(true)}
+                }
+                type="button"
+            >
                 Delete
             </button>
             {modal}

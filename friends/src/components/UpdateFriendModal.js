@@ -67,7 +67,10 @@ const UpdateFriendModal = props => {
     return (
         <React.Fragment>
             <button
-                onClick={() => setModalActive(true)}
+                onClick={event => {
+                    event.target.parentElement.parentElement.classList.remove('active');
+                    setModalActive(true);
+                }}
                 type="button"
             >
                 Update
