@@ -49,8 +49,8 @@
     opacity: 0.3;
     transform: scale(1.1) translateY(-10px);
     -webkit-transform: scale(1.1) translateY(-10px);
-    transition: all 0.3s linear;
-    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
 }
   
 .modal--animated.has-entered {
@@ -61,8 +61,8 @@
   
 .underlay {
     background-color: rgba(0, 0, 0, 0);
-    transition: all 0.3s linear;
-    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
 }
   
 .underlay.has-entered {

@@ -9,6 +9,12 @@ import './Modal.css';
 
 const AddFriendModal = () => {
     const [modalActive, setModalActive] = useState(false);
+    const [modalEntered, setModalEntered] = useState(false);
+
+    const deactivateModal = () => {
+        setModalEntered(false);
+        setTimeout(() => setModalActive(false), 300);
+    };
 
     const getApplicationNode = () => document.querySelector('.App');
     
@@ -27,16 +33,26 @@ const AddFriendModal = () => {
             .catch(error => console.log(error));
     };
 
+    // transition things
+    let modalContentClass = 'friend-modal modal--animated';
+    let underlayClass = 'underlay';
+    if (modalEntered) {
+        modalContentClass += ' has-entered';
+        underlayClass += ' has-entered';
+    };
+
     const modal = modalActive
         ?   <AriaModal
                 initialFocus="#name-field"
                 getApplicationNode={() => getApplicationNode()}
-                onExit={() => setModalActive(false)}
+                onEnter={() => setModalEntered(true)}
+                onExit={() => deactivateModal()}
                 titleText="Add Friend"
+                underlayClass={underlayClass}
                 underlayStyle={{ paddingTop: '2rem' }}
                 verticallyCenter
             >
-                <div className="friend-modal">
+                <div className={modalContentClass}>
                     <header>
                         <h3>Add Friend</h3>
                     </header>
@@ -58,7 +74,7 @@ const AddFriendModal = () => {
                         </button>
                         <button
                             id="cancel"
-                            onClick={() => setModalActive(false)}
+                            onClick={() => deactivateModal()}
                             type="button"
                         >
                             Cancel
