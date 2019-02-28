@@ -2,10 +2,11 @@ import React from 'react';
 import './Friend.css';
 
 import DeleteFriendModal from './DeleteFriendModal';
+import UpdateFriendModal from './UpdateFriendModal';
 
 const enterFriend = event => {
     event.stopPropagation();
-    console.log('enter:', event.target);
+    // console.log('enter:', event.target);
     // prevent every element from getting the '.active' class
     if (event.target.classList.contains('friend')) {
         event.target.classList.add('active');
@@ -13,7 +14,7 @@ const enterFriend = event => {
 };
 const leaveFriend = event => {
     event.stopPropagation();
-    console.log('leave:', event.relatedTarget);
+    // console.log('leave:', event.relatedTarget);
     event.target.classList.remove('active');
 };
 
@@ -30,8 +31,8 @@ const Friend = props => {
             <p className="age">Age: {props.friend.age}</p>
             <a className="email" href={`mailto:${props.friend.email}`}>{props.friend.email}</a>
             <div className="friend-buttons">
-                <button type="button">Edit</button>
-                <DeleteFriendModal friendName={props.friend.name} />
+                <UpdateFriendModal friend={props.friend} />
+                <DeleteFriendModal friend={props.friend} />
             </div>
         </div>
     )

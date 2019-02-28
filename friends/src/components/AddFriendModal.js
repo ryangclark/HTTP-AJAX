@@ -5,14 +5,15 @@ import axios from 'axios';
 
 import FriendForm from './FriendForm';
 
+import './Modal.css';
+
 const AddFriendModal = () => {
     const [modalActive, setModalActive] = useState(false);
 
     const getApplicationNode = () => document.querySelector('.App');
     
-    const handleFriendSubmit = event => {
+    const handleFriendAdd = event => {
         event.preventDefault();
-        console.log(event.target);
         const newFriend = {
             name: event.target[0].value,
             age: event.target[1].value,
@@ -28,7 +29,7 @@ const AddFriendModal = () => {
 
     const modal = modalActive
         ?   <AriaModal
-                initialFocus="#modal-focus"
+                initialFocus="#name-field"
                 getApplicationNode={() => getApplicationNode()}
                 onExit={() => setModalActive(false)}
                 titleText="Add Friend"
@@ -40,7 +41,12 @@ const AddFriendModal = () => {
                         <h3>Add Friend</h3>
                     </header>
                     <FriendForm
-                        handleFriendSubmit={handleFriendSubmit}
+                        handleFormSubmit={handleFriendAdd}
+                        friend={{
+                            name: '',
+                            age: 0,
+                            email: ''
+                        }}
                         purpose={'add-friend'}
                     />
                     <footer className="modal-footer">

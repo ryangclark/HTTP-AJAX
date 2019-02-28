@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
 
 import AriaModal from 'react-aria-modal';
+import axios from 'axios';
+
+import './Modal.css';
 
 const DeleteFriendModal = props => {
     const [modalActive, setModalActive] = useState(false);
 
     const getApplicationNode = () => document.querySelector('.App');
+
+    const handleFriendDelete = () => {
+        axios
+            .delete(`http://localhost:5000/friends/${props.friend.id}`)
+            // .then(response => console.log(response))
+            .then(() => setModalActive(false))
+            .catch(error => console.log(error));
+    }
 
     const modal = modalActive
         ?   <AriaModal
@@ -20,9 +31,14 @@ const DeleteFriendModal = props => {
                     <header>
                         <h3>Delete Friend?</h3>
                     </header>
-                    <p>Delete {props.friendName} as a friend?<br></br><br></br>This action can be undone by simply refreshing the page because we don't know how to persist data on the backend quite yet.</p>
+                    <p>Delete {props.friend.name} as a friend?<br></br><br></br>This action can be undone by simply refreshing the page because we don't know how to persist data on the backend quite yet.</p>
                     <footer className="modal-footer">
-                        <button type="button">Delete</button>
+                        <button
+                            onClick={() => handleFriendDelete()}
+                            type="button"
+                        >
+                            Delete
+                        </button>
                         <button
                             id="cancel"
                             onClick={() => setModalActive(false)}
