@@ -14,6 +14,34 @@ h2 {
     padding: 0.5rem 0;
 }
 
+.friend > .name {
+    /* display: inline-block; */
+}
+
+.friend > .rank {
+    /* display: inline-block; */
+    color: rgba(0, 0, 0, 0.6);
+    float: right;
+    padding: 0;
+}
+
+.friend-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem 0 0.25rem;
+}
+
+.friend-buttons > button {
+    opacity: 0;
+    transition: opacity 0.35s;
+    transition-timing-function: ease;
+    -webkit-transition: opacity 0.35s;
+}
+
+.friend.active > .friend-buttons > button {
+    opacity: 1;
+}
+
 .friend-form {
     display: flex;
     flex-direction: column;

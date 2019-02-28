@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const handleFriendSubmit = event => {
     event.preventDefault();
+    console.log(event.target);
     const newFriend = {
         name: event.target[0].value,
         age: event.target[1].value,
